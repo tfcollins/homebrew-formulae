@@ -10,6 +10,7 @@ class Iioscope < Formula
   depends_on "glib" => :build
   depends_on "cairo" => :build
   depends_on "pango" => :build
+  depends_on "fribidi" => :build
   depends_on "atk" => :build
   depends_on "gdk-pixbuf" => :build
   depends_on "gtkdatabox" => :build
