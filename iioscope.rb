@@ -1,5 +1,5 @@
 
-class IioOscilloscopeNEW < Formula
+class Iioscope < Formula
   desc "IIO Oscilloscope NEW"
   homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
   head "https://github.com/tfcollins/iio-oscilloscope.git"
