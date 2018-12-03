@@ -12,7 +12,7 @@ class Libiio < Formula
   depends_on "libusb" => :build
   depends_on "bison" => :build
   depends_on "flex" => :build
-  depends_on "libcdk5-dev" => :build
+#  depends_on "libcdk5-dev" => :build
 
   def install
     ENV.deparallelize  # if your formula fails when building in parallel
