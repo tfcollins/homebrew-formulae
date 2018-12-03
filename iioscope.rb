@@ -9,6 +9,7 @@ class Iioscope < Formula
   depends_on "gtk+" => :build
   depends_on "glib" => :build
   depends_on "libpng" => :build
+  depends_on "graphite2" => :build
   depends_on "harfbuzz" => :build
   depends_on "freetype" => :build
   depends_on "fontconfig" => :build
