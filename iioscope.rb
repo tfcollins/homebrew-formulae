@@ -2,7 +2,7 @@
 class Iioscope < Formula
   desc "IIO Oscilloscope NEW"
   homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
-  head "https://github.com/tfcollins/iio-oscilloscope.git"
+  head "https://github.com/analogdevicesinc/iio-oscilloscope.git"
 
   # lib-2.0 gtk+-2.0 gthread-2.0 gtkdatabox fftw3 libiio libxml-2.0 libcurl jansson
   # depends_on "cmake" => :build
