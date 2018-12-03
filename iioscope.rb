@@ -8,6 +8,7 @@ class Iioscope < Formula
   depends_on "cmake" => :build
   depends_on "gtk+" => :build
   depends_on "glib" => :build
+  depends_on "pixman-1" => :build
   depends_on "cairo" => :build
   depends_on "pango" => :build
   depends_on "fribidi" => :build
