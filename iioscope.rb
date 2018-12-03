@@ -8,6 +8,7 @@ class Iioscope < Formula
   depends_on "cmake" => :build
   depends_on "gtk+" => :build
   depends_on "glib" => :build
+  depends_on "freetype2" => :build
   depends_on "fontconfig" => :build
   depends_on "pixman" => :build
   depends_on "cairo" => :build
