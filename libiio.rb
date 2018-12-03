@@ -4,12 +4,12 @@ class Libiio < Formula
   homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
   head "https://github.com/analogdevicesinc/libiio.git"
 
-  # lib-2.0 gtk+-2.0 gthread-2.0 gtkdatabox fftw3 libiio libxml-2.0 libcurl jansson
+  # libusb libxml2
   depends_on "cmake" => :build
   depends_on "gtk+" => :build
   depends_on "glib" => :build
   depends_on "libxml2" => :build
-  depends_on "libxml2-dev" => :build
+  depends_on "libusb" => :build
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "libcdk5-dev" => :build
