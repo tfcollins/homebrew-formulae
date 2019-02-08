@@ -1,15 +1,20 @@
 
-class IioOscilloscope < Formula
+class IIOOscilloscope < Formula
+
   desc "IIO Oscilloscope"
   homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
-  head "https://github.com/tfcollins/iio-oscilloscope.git"
+  head "https://github.com/analogdevicesinc/iio-oscilloscope.git", :branch => "osx-brew-support" 
 
-  # lib-2.0 gtk+-2.0 gthread-2.0 gtkdatabox fftw3 libiio libxml-2.0 libcurl jansson
-  # depends_on "cmake" => :build
+  depends_on "cmake" => :build
   depends_on "gtk+" => :build
   depends_on "glib" => :build
   depends_on "cairo" => :build
+  depends_on "pixman" => :build
+  depends_on "fontconfig" => :build
+  depends_on "freetype" => :build
+  depends_on "libpng" => :build
   depends_on "pango" => :build
+  depends_on "fribidi" => :build
   depends_on "atk" => :build
   depends_on "gdk-pixbuf" => :build
   depends_on "gtkdatabox" => :build
@@ -20,16 +25,17 @@ class IioOscilloscope < Formula
   depends_on "pkg-config" => :build
   depends_on "libmatio" => :build
   depends_on "gettext" => :build
-  # depends_on "libiio" => :build
-  # depends_on "libad9361-iio" => :build
+  depends_on "harfbuzz" => :build
+  depends_on "graphite2" => :build
 
   def install
-    ENV.deparallelize  # if your formula fails when building in parallel
-    system "make"
-    system "make","DESTDIR=#{prefix}","install-common-files"
+    ENV.deparallelize
+    system "cmake ./CMakeLists.txt -DCMAKE_INSTALL_PREFIX='#{prefix}'"
+    system "make", "install"
   end
 
   test do
     system "false"
   end
+
 end
