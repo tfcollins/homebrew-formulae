@@ -3,7 +3,7 @@ class IIOOscilloscope < Formula
 
   desc "IIO Oscilloscope"
   homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
-  head "https://github.com/analogdevicesinc/iio-oscilloscope.git", :branch => "osx-brew-support" 
+  head "https://github.com/analogdevicesinc/iio-oscilloscope.git"
 
   depends_on "cmake" => :build
   depends_on "gtk+" => :build
