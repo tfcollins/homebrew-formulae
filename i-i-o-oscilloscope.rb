@@ -27,6 +27,7 @@ class IIOOscilloscope < Formula
   depends_on "gettext" => :build
   depends_on "harfbuzz" => :build
   depends_on "graphite2" => :build
+  depends_on "libffi" => :build
 
   def install
     ENV.deparallelize
