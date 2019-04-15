@@ -5,6 +5,7 @@ class IIOOscilloscope < Formula
   homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
   url "https://github.com/analogdevicesinc/iio-oscilloscope/archive/v0.10-master.tar.gz"
   sha256 "45feffd087f2bb53b9b9d1e2fa00e7423e94f024c8adc5cedc8f145ff3afb4ea"
+  head "https://github.com/analogdevicesinc/iio-oscilloscope.git"
 
   depends_on "cmake" => :build
   depends_on "gtk+" => :build
