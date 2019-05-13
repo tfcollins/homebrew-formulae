@@ -1,0 +1,18 @@
+language: c
+os: osx
+
+before_install:
+  - brew update >/dev/null
+  - curl -O http://swdownloads.analog.com/cse/travis_builds/master_latest_libiio-darwin-10.13.6.pkg
+  - sudo installer -store -verbose -pkg master_latest_libiio-darwin-10.13.6.pkg -target /
+  - curl -O http://swdownloads.analog.com/cse/travis_builds/master_latest_libad9361-iio-osx_10.12.pkg
+  - sudo installer -store -verbose -pkg master_latest_libad9361-iio-osx_10.12.pkg -target /
+
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Release"
+      script: brew install -v --build-from-source ./i-i-o-oscilloscope.rb
+    - stage: "Tests"
+      name: "Master"
+      script: brew install -v --HEAD --build-from-source ./i-i-o-oscilloscope.rb
