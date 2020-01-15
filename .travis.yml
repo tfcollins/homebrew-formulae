@@ -1,5 +1,6 @@
 language: c
 os: osx
+osx_image: xcode10.1
 
 before_install:
   - brew update >/dev/null
