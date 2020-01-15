@@ -1,7 +1,9 @@
 language: c
 os: osx
+osx_image: xcode10.1
 
 before_install:
+  - brew unlink python@2
   - brew update >/dev/null
   - curl -O http://swdownloads.analog.com/cse/travis_builds/master_latest_libiio-darwin-10.13.6.pkg
   - sudo installer -store -verbose -pkg master_latest_libiio-darwin-10.13.6.pkg -target /
