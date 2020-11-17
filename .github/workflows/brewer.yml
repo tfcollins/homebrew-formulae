@@ -1,0 +1,22 @@
+name: Build and test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        recipe: ['i-i-o-oscilloscope.rb','libad9361-iio.rb','libiio.rb']
+        release: ["", "--HEAD"]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Update brew
+        run: brew update
+
+      - name: Build and test recipe
+        run: |
+          brew install -v ${{ matrix.release }} --build-from-source ./${{ matrix.recipe }}
+          brew test
