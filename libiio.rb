@@ -23,9 +23,13 @@ class Libiio < Formula
       system "make"
       system "make", "install"
     end
+
+    Dir.glob("#{frameworks}/iio.framework/Tools/*").each do |exec|
+      bin.install_symlink exec if File.executable?(exec)
+    end
   end
 
   test do
-    system "#{frameworks}/iio.framework/Tools/iio_info", "--help"
+    system "#{bin}/iio_info", "--help"
   end
 end
