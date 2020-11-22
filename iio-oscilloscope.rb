@@ -29,12 +29,6 @@ class IioOscilloscope < Formula
   uses_from_macos "libxml2"
 
   def install
-    # Do not disable peer certificate verification when checking for updates;
-    # this crashes on macOS.
-    inreplace "phone_home.c" do |s|
-      s.gsub! /(CURLOPT_SSL_VERIFYPEER), false/, '\1, true'
-    end
-
     mkdir "build" do
       system "cmake", "..", *std_cmake_args
       system "make", "install"
