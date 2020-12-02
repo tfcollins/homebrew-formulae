@@ -1,32 +1,35 @@
-
 class Libiio < Formula
-  desc "libIIO"
-  homepage "https://github.com/analogdevicesinc/iio-oscilloscope/wiki"
-#  head "https://github.com/analogdevicesinc/libiio.git"
-  url "https://github.com/analogdevicesinc/libiio/archive/v0.17.tar.gz"
+  desc "Library for interfacing with local and remote Linux IIO devices"
+  homepage "https://analogdevicesinc.github.io/libiio/"
+  url "https://github.com/analogdevicesinc/libiio/archive/v0.21.tar.gz"
+  sha256 "03d13165cbeb83b036743cbd9a10e336c728da162714f39d13250a3d94305cac"
+  license "LGPL-2.1"
+  head "https://github.com/analogdevicesinc/libiio.git"
 
-  # libusb libxml2
   depends_on "cmake" => :build
-#  depends_on "gtk+" => :build
-#  depends_on "glib" => :build
-#  depends_on "libcdk5-dev" => :build
-#  depends_on "bison" => :build
-#  depends_on "flex" => :build
-  depends_on "doxygen" => build
-  depends_on "libxml2" => :build
-  depends_on "libusb" => :build
+
+  depends_on "libserialport"
+  depends_on "libusb"
+
+  uses_from_macos "libxml2"
 
   def install
-    ENV.deparallelize  # if your formula fails when building in parallel
-    system "mkdir build"
-    system "cd build"
-    system "pwd"
-    system "cmake .."
-    system "make"
-    #system "make","DESTDIR=#{prefix}","install-common-files"
+    mkdir "build" do
+      cmake_args = [
+        "-DOSX_INSTALL_FRAMEWORKSDIR=#{frameworks}",
+        "-DOSX_PACKAGE=OFF",
+      ]
+      system "cmake", "..", *cmake_args, *std_cmake_args
+      system "make"
+      system "make", "install"
+    end
+
+    Dir.glob("#{frameworks}/iio.framework/Tools/*").each do |exec|
+      bin.install_symlink exec if File.executable?(exec)
+    end
   end
 
   test do
-    system "false"
+    system "#{bin}/iio_info", "--help"
   end
 end
