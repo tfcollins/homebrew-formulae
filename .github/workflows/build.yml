@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ macos-10.15 ]
+        package: [ libiio, libad9361-iio, gr-iio, iio-oscilloscope ]
 
     runs-on: ${{ matrix.os }}
 
@@ -16,11 +17,8 @@ jobs:
     - name: Copy formulae
       run: cp *.rb $(brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
     - name: Install
-      # We install the IIO Oscilloscope package, which builds the others
-      # through dependency resolution.
-      run: brew install --verbose --build-from-source iio-oscilloscope
-    - name: Test
       run: |
-        for formula in *.rb; do
-          brew test "${formula%.rb}"
-        done
+        [ "${{ matrix.package }}" = "gr-iio" ] && OPTIONS="--HEAD"
+        brew install --verbose --build-from-source $OPTIONS ${{ matrix.package }}
+    - name: Test
+      run: brew test ${{ matrix.package }}
