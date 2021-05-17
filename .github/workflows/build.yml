@@ -6,8 +6,9 @@ jobs:
   install:
 
     strategy:
+      fail-fast: false
       matrix:
-        os: [ macos-10.15 ]
+        os: [ macos-10.15, macos-11.0 ]
         package: [ libiio, libad9361-iio, gr-iio, iio-oscilloscope ]
 
     runs-on: ${{ matrix.os }}
@@ -18,7 +19,11 @@ jobs:
       run: cp *.rb $(brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
     - name: Install
       run: |
-        [ "${{ matrix.package }}" = "gr-iio" ] && OPTIONS="--HEAD"
+        [ "${{ matrix.package }}" == "gr-iio" ] && OPTIONS="--HEAD"
+        [ "${{ matrix.package }}" != "libiio" ] && brew install --verbose --build-from-source libiio
+        [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source libad9361-iio
+        [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source gtkdatabox-prev1
+        [ "${{ matrix.package }}" == "gr-iio" ] && brew install --verbose --build-from-source libad9361-iio
         brew install --verbose --build-from-source $OPTIONS ${{ matrix.package }}
     - name: Test
       run: brew test ${{ matrix.package }}
