@@ -19,7 +19,8 @@ jobs:
       run: cp *.rb $(brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
     - name: Install
       run: |
-        [ "${{ matrix.package }}" = "gr-iio" ] && OPTIONS="--HEAD"
+        [ "${{ matrix.package }}" == "gr-iio" ] && OPTIONS="--HEAD"
+        brew update
         brew install --verbose --build-from-source $OPTIONS ${{ matrix.package }}
     - name: Test
       run: brew test ${{ matrix.package }}
