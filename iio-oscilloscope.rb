@@ -21,6 +21,7 @@ class IioOscilloscope < Formula
   depends_on "harfbuzz"
   depends_on "jansson"
   depends_on "libad9361-iio"
+  depends_on "libglade"
   depends_on "libiio"
   depends_on "libmatio"
   depends_on "libserialport"
