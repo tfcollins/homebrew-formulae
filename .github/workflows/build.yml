@@ -22,6 +22,7 @@ jobs:
         [ "${{ matrix.package }}" == "gr-iio" ] && OPTIONS="--HEAD"
         [ "${{ matrix.package }}" != "libiio" ] && brew install --verbose --build-from-source libiio
         [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source libad9361-iio
+        [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source gtkdatabox-prev1
         [ "${{ matrix.package }}" == "gr-iio" ] && brew install --verbose --build-from-source libad9361-iio
         brew install --verbose --build-from-source $OPTIONS ${{ matrix.package }}
     - name: Test
