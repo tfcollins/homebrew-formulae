@@ -1,4 +1,7 @@
-class Gtkdatabox < Formula
+# typed: false
+# frozen_string_literal: true
+
+class GtkdataboxPrev1 < Formula
   desc "Widget for live display of large amounts of changing data"
   homepage "https://sourceforge.net/projects/gtkdatabox/"
   url "https://downloads.sourceforge.net/project/gtkdatabox/gtkdatabox/0.9.3.1/gtkdatabox-0.9.3.1.tar.gz"
@@ -11,11 +14,10 @@ class Gtkdatabox < Formula
   end
 
   bottle do
-    cellar :any
-    sha256 "0653f694493bb5cda05df1dde2b340014e5c51e46d7f0c9351092cbc9c9d45fa" => :big_sur
-    sha256 "6159b963d83a085b13210a728e559a4f9fdb1a54f6887ed198792772d0c9c222" => :arm64_big_sur
-    sha256 "5bbfa821a847ebaad507380489df974dd82fd7ed99fef8966cd8e27549671fe4" => :catalina
-    sha256 "af155aeb3a3df37027681ffb4873d0ab87263a34e1268d8b87e45f76c6824750" => :mojave
+    sha256 cellar: :any, arm64_big_sur: "6159b963d83a085b13210a728e559a4f9fdb1a54f6887ed198792772d0c9c222"
+    sha256 cellar: :any, big_sur:       "0653f694493bb5cda05df1dde2b340014e5c51e46d7f0c9351092cbc9c9d45fa"
+    sha256 cellar: :any, catalina:      "5bbfa821a847ebaad507380489df974dd82fd7ed99fef8966cd8e27549671fe4"
+    sha256 cellar: :any, mojave:        "af155aeb3a3df37027681ffb4873d0ab87263a34e1268d8b87e45f76c6824750"
   end
 
   depends_on "pkg-config" => :build
@@ -23,7 +25,7 @@ class Gtkdatabox < Formula
 
   def install
     system "./configure", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}"
+           "--prefix=#{prefix}"
     system "make", "install"
   end
 
