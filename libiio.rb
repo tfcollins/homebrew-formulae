@@ -1,8 +1,8 @@
 class Libiio < Formula
   desc "Library for interfacing with local and remote Linux IIO devices"
   homepage "https://analogdevicesinc.github.io/libiio/"
-  url "https://github.com/analogdevicesinc/libiio/archive/v0.21.tar.gz"
-  sha256 "03d13165cbeb83b036743cbd9a10e336c728da162714f39d13250a3d94305cac"
+  url "https://github.com/analogdevicesinc/libiio/archive/v0.23.tar.gz"
+  sha256 "df1577740ea93dca732e7d7c04786600cb083117901dee793f3d38980754af00"
   license "LGPL-2.1"
   head "https://github.com/analogdevicesinc/libiio.git"
 
