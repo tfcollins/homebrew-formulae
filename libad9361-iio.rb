@@ -1,8 +1,8 @@
 class Libad9361Iio < Formula
   desc "IIO AD9361 library for filter design and handling, multi-chip sync, etc."
   homepage "https://analogdevicesinc.github.io/libad9361-iio/"
-  url "https://github.com/analogdevicesinc/libad9361-iio/archive/v0.2.tar.gz"
-  sha256 "f0d935eb7f70fde8596d98e9eb1f311b408b87662fc1fff45ae3ed455697b747"
+  url "https://github.com/analogdevicesinc/libad9361-iio/archive/v0.3.tar.gz"
+  sha256 "1dc35dd997e1938a97489fa1f349ee16889f9de8901a2c7af46184468dc90598"
   license "LGPL-2.1"
   head "https://github.com/analogdevicesinc/libad9361-iio.git"
 
