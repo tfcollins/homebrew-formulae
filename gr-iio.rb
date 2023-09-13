@@ -15,7 +15,7 @@ class GrIio < Formula
   depends_on "boost"
   depends_on "fftw"
   depends_on "gmp"
-  depends_on "gnuradio"
+  depends_on "gnuradio@3.8"
   depends_on "libad9361-iio"
   depends_on "libiio"
   depends_on "log4cpp"
