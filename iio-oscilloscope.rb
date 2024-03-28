@@ -1,8 +1,8 @@
 class IioOscilloscope < Formula
   desc "GTK+ based oscilloscope application for interfacing with various IIO devices"
   homepage "https://wiki.analog.com/resources/tools-software/linux-software/iio_oscilloscope"
-  url "https://github.com/analogdevicesinc/iio-oscilloscope/archive/v0.11-master.tar.gz"
-  sha256 "df31ae208f806f8291c3d4fd53d57d2e54acff4ab65c5ae52c18730fc76c6e64"
+  url "https://github.com/analogdevicesinc/iio-oscilloscope/archive/v0.17-master.tar.gz"
+  sha256 "ADD4E46B3BF59365DEADCFBF5544FDB967E9EE7D67E136B8E56A3956289DA6CE"
   license "GPL-2.0"
   head "https://github.com/analogdevicesinc/iio-oscilloscope.git"
 
