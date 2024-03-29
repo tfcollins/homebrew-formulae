@@ -16,7 +16,7 @@ class IioOscilloscope < Formula
   depends_on "gdk-pixbuf"
   depends_on "gettext"
   depends_on "glib"
-  depends_on "gtk+"
+  depends_on "gtk+3"
   depends_on "gtkdatabox"
   depends_on "harfbuzz"
   depends_on "jansson"
