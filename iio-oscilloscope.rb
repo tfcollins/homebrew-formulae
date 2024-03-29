@@ -5,6 +5,7 @@ class IioOscilloscope < Formula
   sha256 "add4e46b3bf59365deadcfbf5544fdb967e9ee7d67e136b8e56a3956289da6ce"
   license "GPL-2.0"
   head "https://github.com/analogdevicesinc/iio-oscilloscope.git", branch: "tfcollins/macos-updates"
+  
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
@@ -21,7 +22,7 @@ class IioOscilloscope < Formula
   depends_on "harfbuzz"
   depends_on "jansson"
   depends_on "libad9361-iio"
-  #depends_on "libglade"
+  # depends_on "libglade"
   depends_on "libiio"
   depends_on "libmatio"
   depends_on "libserialport"
@@ -33,6 +34,8 @@ class IioOscilloscope < Formula
     mkdir "build" do
       system "cmake", "..", *std_cmake_args
       system "make", "install"
+      # Update rpath of the binary to point to the libosc library
+      system "install_name_tool", "-change", "@rpath/libosc.0.dylib", "#{lib}/libosc.dylib", "#{bin}/osc"
     end
   end
 
