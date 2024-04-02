@@ -6,7 +6,6 @@ class IioOscilloscope < Formula
   license "GPL-2.0"
   head "https://github.com/analogdevicesinc/iio-oscilloscope.git", branch: "tfcollins/macos-updates"
   
-
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
 
@@ -22,7 +21,7 @@ class IioOscilloscope < Formula
   depends_on "harfbuzz"
   depends_on "jansson"
   depends_on "libad9361-iio"
-  # depends_on "libglade"
+  depends_on "libglade"
   depends_on "libiio"
   depends_on "libmatio"
   depends_on "libserialport"
@@ -36,6 +35,11 @@ class IioOscilloscope < Formula
       system "make", "install"
       # Update rpath of the binary to point to the libosc library
       system "install_name_tool", "-change", "@rpath/libosc.0.dylib", "#{lib}/libosc.dylib", "#{bin}/osc"
+      # Get list of all dylibs within lib/osc directory
+      dylibs = Dir["#{lib}/osc/*.dylib"]
+      dylibs.each do |dylib|
+        system "install_name_tool", "-change", "@rpath/libosc.0.dylib", "#{lib}/libosc.dylib", "#{dylib}"
+      end
     end
   end
 
