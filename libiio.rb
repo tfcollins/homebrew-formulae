@@ -18,6 +18,7 @@ class Libiio < Formula
       cmake_args = [
         "-DOSX_INSTALL_FRAMEWORKSDIR=#{frameworks}",
         "-DOSX_PACKAGE=OFF",
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
       ]
       system "cmake", "..", *cmake_args, *std_cmake_args
       system "make"

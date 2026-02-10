@@ -21,7 +21,6 @@ class IioOscilloscope < Formula
   depends_on "harfbuzz"
   depends_on "jansson"
   depends_on "libad9361-iio"
-  depends_on "libglade"
   depends_on "libiio"
   depends_on "libmatio"
   depends_on "libserialport"
@@ -30,8 +29,9 @@ class IioOscilloscope < Formula
   uses_from_macos "libxml2"
 
   def install
+    ENV.append "CFLAGS", "-Wno-error=implicit-function-declaration"
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args
+      system "cmake", "..", "-DCMAKE_POLICY_VERSION_MINIMUM=3.5", *std_cmake_args
       system "make", "install"
     end
   end
