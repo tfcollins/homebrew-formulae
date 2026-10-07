@@ -15,6 +15,7 @@ class Libad9361Iio < Formula
     mkdir "build" do
       cmake_args = [
         "-DOSX_PACKAGE=OFF",
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
       ]
       system "cmake", "..", *cmake_args, *std_cmake_args
       system "make"
