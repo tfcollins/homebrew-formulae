@@ -16,7 +16,9 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Tap repository
-      run: brew tap tfcollins/formulae .
+      run: |
+        brew tap tfcollins/formulae .
+        brew trust tfcollins/formulae
     - name: Install
       env:
         HOMEBREW_NO_INSTALL_FROM_API: 1
