@@ -30,7 +30,11 @@ class IioOscilloscope < Formula
 
   def install
     mkdir "build" do
-      system "cmake", "..", "-DCMAKE_POLICY_VERSION_MINIMUM=3.5", *std_cmake_args
+      system "cmake", "..",
+             "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+             "-DCMAKE_INSTALL_RPATH=#{lib}",
+             "-DCMAKE_MACOSX_RPATH=1",
+             *std_cmake_args
       system "make", "install"
     end
   end
