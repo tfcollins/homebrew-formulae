@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ macos-14, macos-15 ]
-        package: [ libiio, libad9361-iio, gr-iio, iio-oscilloscope ]
+        package: [ libiio, libiio@1, libad9361-iio, gr-iio, iio-oscilloscope ]
 
     runs-on: ${{ matrix.os }}
 
@@ -22,7 +22,7 @@ jobs:
         HOMEBREW_NO_INSTALL_FROM_API: 1
       run: |
         [ "${{ matrix.package }}" == "gr-iio" ] && OPTIONS="--HEAD"
-        [ "${{ matrix.package }}" != "libiio" ] && brew install --verbose --build-from-source tfcollins/formulae/libiio
+        [ "${{ matrix.package }}" != "libiio" ] && [ "${{ matrix.package }}" != "libiio@1" ] && brew install --verbose --build-from-source tfcollins/formulae/libiio
         [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source tfcollins/formulae/libad9361-iio
         [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source tfcollins/formulae/gtkdatabox-prev1
         [ "${{ matrix.package }}" == "gr-iio" ] && brew install --verbose --build-from-source tfcollins/formulae/libad9361-iio

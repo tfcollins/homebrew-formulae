@@ -1,10 +1,10 @@
-class Libiio < Formula
+class LibiioAT1 < Formula
   desc "Library for interfacing with local and remote Linux IIO devices"
   homepage "https://analogdevicesinc.github.io/libiio/"
-  url "https://github.com/analogdevicesinc/libiio/archive/v0.26.tar.gz"
-  sha256 "fb445fb860ef1248759f45d4273a4eff360534480ec87af64c6b8db3b99be7e5"
+  url "https://github.com/analogdevicesinc/libiio/archive/v1.0.0.tar.gz"
+  sha256 "b4289bf9971f4a193c8c5f7fb40fbd4bd3f33654936b960b9539c7f2b484e44a"
   license "LGPL-2.1"
-  head "https://github.com/analogdevicesinc/libiio.git"
+  head "https://github.com/analogdevicesinc/libiio.git", branch: "main"
 
   depends_on "cmake" => :build
 
@@ -18,7 +18,6 @@ class Libiio < Formula
       cmake_args = [
         "-DOSX_INSTALL_FRAMEWORKSDIR=#{frameworks}",
         "-DOSX_PACKAGE=OFF",
-        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
       ]
       system "cmake", "..", *cmake_args, *std_cmake_args
       system "make"
