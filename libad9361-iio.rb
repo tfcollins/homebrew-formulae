@@ -24,6 +24,11 @@ class Libad9361Iio < Formula
 
     # For some reason they install a framework in lib/
     frameworks.install_symlink lib/"ad9361.framework"
+
+    Dir.glob("#{frameworks}/ad9361.framework/Headers/*").each do |header|
+      include.install_symlink header
+    end
+    lib.install_symlink "#{frameworks}/ad9361.framework/ad9361" => "libad9361.dylib" if File.exist?("#{frameworks}/ad9361.framework/ad9361")
   end
 
   test do

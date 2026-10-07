@@ -28,6 +28,11 @@ class Libiio < Formula
     Dir.glob("#{frameworks}/iio.framework/Tools/*").each do |exec|
       bin.install_symlink exec if File.executable?(exec)
     end
+
+    Dir.glob("#{frameworks}/iio.framework/Headers/*").each do |header|
+      include.install_symlink header
+    end
+    lib.install_symlink "#{frameworks}/iio.framework/iio" => "libiio.dylib" if File.exist?("#{frameworks}/iio.framework/iio")
   end
 
   test do
