@@ -30,6 +30,10 @@ class IioOscilloscope < Formula
   def install
     ENV.append_to_cflags "-D_DARWIN_C_SOURCE" if OS.mac?
 
+    inreplace "osc.h",
+              "#define fallthrough\t__attribute__((__fallthrough__))",
+              "#ifdef __APPLE__\n#include <os/base.h>\n#endif\n#define fallthrough\t__attribute__((__fallthrough__))"
+
     mkdir "build" do
       system "cmake", "..",
              "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
