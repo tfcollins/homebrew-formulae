@@ -28,11 +28,14 @@ class IioOscilloscope < Formula
   uses_from_macos "libxml2"
 
   def install
+    ENV.append_to_cflags "-D_DARWIN_C_SOURCE" if OS.mac?
+
     mkdir "build" do
       system "cmake", "..",
              "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
              "-DCMAKE_INSTALL_RPATH=#{lib}",
              "-DCMAKE_MACOSX_RPATH=1",
+             "-DCMAKE_C_FLAGS=-D_DARWIN_C_SOURCE",
              *std_cmake_args
       system "make", "install"
     end
