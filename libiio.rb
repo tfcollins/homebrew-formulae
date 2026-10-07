@@ -29,9 +29,8 @@ class Libiio < Formula
       bin.install_symlink exec if File.executable?(exec)
     end
 
-    Dir.glob("#{frameworks}/iio.framework/Headers/*").each do |header|
-      include.install_symlink header
-    end
+    (include/"iio").install_symlink Dir["#{frameworks}/iio.framework/Headers/*"]
+    include.install_symlink Dir["#{frameworks}/iio.framework/Headers/*"]
     lib.install_symlink "#{frameworks}/iio.framework/iio" => "libiio.dylib" if File.exist?("#{frameworks}/iio.framework/iio")
   end
 
