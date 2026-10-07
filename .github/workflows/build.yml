@@ -23,11 +23,8 @@ jobs:
       env:
         HOMEBREW_NO_INSTALL_FROM_API: 1
       run: |
-        [ "${{ matrix.package }}" == "gr-iio" ] && OPTIONS="--HEAD"
         [ "${{ matrix.package }}" != "libiio" ] && [ "${{ matrix.package }}" != "libiio@1" ] && brew install --verbose --build-from-source tfcollins/formulae/libiio
         [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source tfcollins/formulae/libad9361-iio
-        [ "${{ matrix.package }}" == "iio-oscilloscope" ] && brew install --verbose --build-from-source tfcollins/formulae/gtkdatabox-prev1
-        [ "${{ matrix.package }}" == "gr-iio" ] && brew install --verbose --build-from-source tfcollins/formulae/libad9361-iio
-        brew install --verbose --build-from-source $OPTIONS tfcollins/formulae/${{ matrix.package }}
+        brew install --verbose --build-from-source tfcollins/formulae/${{ matrix.package }}
     - name: Test
       run: brew test tfcollins/formulae/${{ matrix.package }}

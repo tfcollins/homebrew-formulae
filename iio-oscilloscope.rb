@@ -1,23 +1,22 @@
 class IioOscilloscope < Formula
   desc "GTK+ based oscilloscope application for interfacing with various IIO devices"
   homepage "https://wiki.analog.com/resources/tools-software/linux-software/iio_oscilloscope"
-  url "https://github.com/analogdevicesinc/iio-oscilloscope/archive/v0.11-master.tar.gz"
-  sha256 "df31ae208f806f8291c3d4fd53d57d2e54acff4ab65c5ae52c18730fc76c6e64"
+  url "https://github.com/analogdevicesinc/iio-oscilloscope/archive/v0.18.1.tar.gz"
+  sha256 "557ad13448bea0c8655920ab73e3d935abad15f8dceed293393f7af3f8c6ec4a"
   license "GPL-2.0"
-  head "https://github.com/analogdevicesinc/iio-oscilloscope.git"
+  head "https://github.com/analogdevicesinc/iio-oscilloscope.git", branch: "main"
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
 
-  depends_on "atk"
   depends_on "cairo"
   depends_on "curl"
   depends_on "fftw"
   depends_on "gdk-pixbuf"
   depends_on "gettext"
   depends_on "glib"
-  depends_on "gtk+"
-  depends_on "gtkdatabox-prev1"
+  depends_on "gtk+3"
+  depends_on "gtkdatabox"
   depends_on "harfbuzz"
   depends_on "jansson"
   depends_on "libad9361-iio"
