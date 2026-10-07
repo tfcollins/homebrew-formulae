@@ -13,10 +13,12 @@ class LibiioAT1 < Formula
 
   uses_from_macos "libxml2"
 
+  keg_only :versioned_formula
+
   def install
     mkdir "build" do
       cmake_args = [
-        "-DOSX_INSTALL_FRAMEWORKSDIR=#{frameworks}",
+        "-DOSX_INSTALL_FRAMEWORKSDIR=Frameworks",
         "-DOSX_PACKAGE=OFF",
       ]
       system "cmake", "..", *cmake_args, *std_cmake_args
@@ -27,9 +29,12 @@ class LibiioAT1 < Formula
     Dir.glob("#{frameworks}/iio.framework/Tools/*").each do |exec|
       bin.install_symlink exec if File.executable?(exec)
     end
+    Dir.glob("#{prefix}/Library/Frameworks/iio.framework/Tools/*").each do |exec|
+      bin.install_symlink exec if File.executable?(exec)
+    end
   end
 
   test do
-    system "#{bin}/iio_info", "--help"
+    system "#{bin}/iio_info", "-V"
   end
 end

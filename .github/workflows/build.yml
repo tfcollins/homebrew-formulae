@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ macos-14, macos-15 ]
-        package: [ libiio, libiio@1, libad9361-iio, gr-iio, iio-oscilloscope ]
+        package: [ libiio, libiio@1, libad9361-iio, iio-oscilloscope ]
 
     runs-on: ${{ matrix.os }}
 
